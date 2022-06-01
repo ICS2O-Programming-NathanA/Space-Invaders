@@ -1,8 +1,13 @@
-/* Global Phaser */
+/* global Phaser */
 
 // Created by Nathan Araujo
 //Created on June 1 2022
 //Phaser 3 config file
+
+import SplashScene from './splashSceen.js'
+
+// Game scene
+const splashScene = new SplashScene()
 
 /*Game scene*/
 const config = {
@@ -25,4 +30,11 @@ backgroundColor: 0x5f6e7a,
 }
 
 const game = new Phaser.Game(config)
-console.log(game)
+
+
+// load scenes
+// NOTE: remember any "key" is gloabal and CAN NOT be resued
+game.scene.add('splashScene', splashScene)
+
+// start scene
+game.scene.start('splashScene')
