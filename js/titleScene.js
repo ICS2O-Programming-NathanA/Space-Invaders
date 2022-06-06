@@ -26,7 +26,8 @@ class TitleScene extends Phaser.Scene {
     console.log("Title Scene")
     this.load.image('titleSceneBackground', 'assets/spaceInvaders-TitleScreen.jpg')
   }
-  
+
+  //displays the content to the user
   create (data) {
     //Centers image on the Screen
     this.titleSceneBackgroundImage =   this.add.sprite(0, 0, 'titleSceneBackground').setScale(1.5)
@@ -38,6 +39,9 @@ class TitleScene extends Phaser.Scene {
   }
   
   update (time, delta) {
+    if (time > 6000) {
+      this.scene.switch("menuScene")
+    }
   }
 }
 
