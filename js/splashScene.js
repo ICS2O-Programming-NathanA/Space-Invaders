@@ -12,12 +12,12 @@ class SplashScene extends Phaser.Scene {
   constructor () {
     super({ key: 'splashScene' })
   }
-  //This method is aclled bu the Scene Manager when the scene starts, befroe preload and create
+  //This method is aclled bu the Scene Manager when the scene starts, before preload and create
   init (data) {
     //color is black
     this.cameras.main.setBackgroundColor('#ffffff')
   }
-  //Use it to laod assets
+  //Use it to load assets
   preload () {
     console.log("Splash Scene")
     this.load.image("splashSceneBackground", "./assets/splashSceneImage.png")
