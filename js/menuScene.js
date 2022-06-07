@@ -6,7 +6,7 @@
 // This is the Menu Scene
 
 class MenuScene extends Phaser.Scene {
-  //Creates a new object that get called with the key "titleScene"
+  //Creates a new object that get called with the key "menuScene"
   constructor () {
     super({ key: "menuScene" })
 
@@ -23,7 +23,7 @@ class MenuScene extends Phaser.Scene {
   preload () {
     console.log("Menu Scene")
     this.load.image('menuSceneBackground', 'assets/SpaceInvadersMenu.png')
-    this.load.image('startButton', 'assets/start.png')
+    this.load.image('play-button', 'assets/play-button.png')
   }
 
   //displays the content to the user
@@ -32,7 +32,7 @@ class MenuScene extends Phaser.Scene {
     this.menuSceneBackgroundImage.x = 1920 / 2
     this.menuSceneBackgroundImage.y = 1080 / 2
 
-    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 300, 'startButton')
+    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 300, 'play-button')
     this.startButton.setInteractive({ useHandCursor: true })
     this.startButton.on('pointerdown', () => this.clickButton ())
   }
