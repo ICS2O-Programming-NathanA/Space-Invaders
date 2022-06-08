@@ -30,10 +30,12 @@ class GameScene extends Phaser.Scene {
     //SpaceShip
     this.load.image('ship', 'assets/spaceinvaders-shooter.png')
 
-      //missle
-    this.load.image('missile', 'assets/missile.png')
-  }
+    //missile
+    this.load.image('missile', 'assets/rocket-space.png')
   
+    //sound for missile
+    this.load.audio('laser', 'assets/laser1.wav')
+  }
   //displays the content to the user
   create (data) {
     this.background = this.add.image(0, 0, 'spaceinvaders-background').setScale(3.0)
@@ -78,13 +80,22 @@ class GameScene extends Phaser.Scene {
         this.fireMissile = true
         const aNewMissile = this.physics.add.sprite(this.ship.x, this.ship.y, 'missile')
         this.missileGroup.add(aNewMissile)
+        //plays laser sound
+        this.sound.play('laser')
       }
     }
-
-
+    //sets firemissile to false
     if (keyspaceObj.isUp === true) {
       this.fireMissile = false
     }
+
+    //creates a function group for the missile group
+    this.missileGroup.children.each(function (item) {
+      item.y = item.y - 5
+      if (item.y < 0) {
+        item.destroy()
+      }
+    })
   }
 }
 

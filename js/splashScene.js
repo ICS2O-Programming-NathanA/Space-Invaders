@@ -12,7 +12,7 @@ class SplashScene extends Phaser.Scene {
   constructor () {
     super({ key: 'splashScene' })
   }
-  //This method is aclled bu the Scene Manager when the scene starts, before preload and create
+  //This method is called by the Scene Manager when the scene starts, before preload and create
   init (data) {
     //color is black
     this.cameras.main.setBackgroundColor('#ffffff')
@@ -28,7 +28,7 @@ class SplashScene extends Phaser.Scene {
     this.splashSceneBackgroundImage.x = 1920 / 2
     this.splashSceneBackgroundImage.y = 1080 / 2
   }
-  //This method is aclled once pergame step while the scene is running
+  //This method is called once per game step while the scene is running
   update (time, delta) {
     if (time > 3000) {
       this.scene.switch("titleScene")
