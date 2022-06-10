@@ -96,16 +96,22 @@ class GameScene extends Phaser.Scene {
       this.createAlien()
     }.bind(this))
 
-    //Collisons between player and alien
-    this.physics.add.collider(this.ship, this.alienGroup, function (shipCollide, alienCollide) {
-      this.sound.play('bomb')
-      this.physics.pause()
-      alienCollide.destroy()
-      shipCollide.destroy()
-      this.gameOverText = this.add.text(1920 / 2, 'Game Over!\nClick to play again.', this.gameOverTextStyle).setOrigin(0.5)
-      this.gameOverText.setInteractive({ useHandCursor: true })
-      this.gameOverText.on('pointerdown', () => this.scene.start('gameScene'))
-    }.bind(this))
+      // collisions between cannon and ants
+      this.physics.add.collider(this.ship, this.alienGroup, function (shipCollide, alienCollide) {
+        // explosion sound on contact
+        this.sound.play('boom')
+        // pause physics to stop new enemies fro spawning
+        this.physics.pause()
+        // destroy cannon on contact with ant
+        alienCollide.destroy()
+        shipCollide.destroy()
+        // set score to 0 score on contact
+        this.score = this.score * 0
+        // display game over text
+        this.gameOverText = this.add.text(1920 / 2, 1080 / 2, 'Game Over!\nClick to play again.', this.gameOverTextStyle).setOrigin(0.5)
+        this.gameOverText.setInteractive({ useHandCursor: true })
+        this.gameOverText.on('pointerdown', () => this.scene.start('gameScene'))
+      }.bind(this))
   }
   
   update (time, delta) {
