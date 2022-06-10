@@ -28,7 +28,7 @@ const config = {
   physics: {
     default: 'arcade',
     arcade: {
-      debug: true
+      debug: false
   },
 },
   // Sets background color to black

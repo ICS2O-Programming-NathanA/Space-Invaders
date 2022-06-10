@@ -61,16 +61,18 @@ class GameScene extends Phaser.Scene {
     this.load.image('alien', 'assets/space-invaders-enemy1.png')
     
     //sound for missile
-    this.load.audio('laser', 'assets/shoot.wav')
+    this.load.audio('laser', 'assets/invaderkilled.wav')
 
     //sound for alien being destroyed
-    this.load.audio('explosion', 'assets/barrelExploding.wav')
+    this.load.audio('explosion', 'assets/shoot.wav')
 
     //sound for alien being destroyed
-    this.load.audio('boom', 'assets/bomb.wav')
+    this.load.audio('boom', 'assets/explosion.wav')
   }
   //displays the content to the user
   create (data) {
+    //centers background
+    //centers text
     this.background = this.add.image(0, 0, 'spaceinvaders-background').setScale(3.0)
     this.background.setOrigin(0, 0)
 
@@ -129,18 +131,17 @@ class GameScene extends Phaser.Scene {
     if (keyLeftObj.isDown === true) {
       this.ship.x -= 5
       if (this.ship.x < 0) {
-        this.ship.x = 0
+        this.ship.x = 1920
       }
     }
     //Moving the ship to the right if the right arrow key is pressed
     if (keyrightObj.isDown === true) {
       this.ship.x += 5
       if (this.ship.x > 1920) {
-        this.ship.x = 1920
+        this.ship.x = 0
       }
     }
-
-    //Fire missile if the spacebar is pressed
+        //Fire missile if the spacebar is pressed
     if (keyspaceObj.isDown === true) {
       if (this.fireMissile === false) {
         //fire missile
