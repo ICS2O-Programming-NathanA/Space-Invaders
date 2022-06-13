@@ -72,7 +72,7 @@ class GameScene extends Phaser.Scene {
     //sound for alien being destroyed
     this.load.audio('explosion', 'assets/shoot.wav')
 
-    //sound for alien being destroyed
+    //sound for ship being destroyed
     this.load.audio('boom', 'assets/explosion.wav')
 
     //sound for winning the game
@@ -98,20 +98,24 @@ class GameScene extends Phaser.Scene {
 
     //Collisons between missiles and aliens
     this.physics.add.collider(this.missileGroup, this.alienGroup, function (missileCollide, alienCollide) {
+      //destroys alien and missile
       alienCollide.destroy()
       missileCollide.destroy()
+      // explosion sound on contact
       this.sound.play('explosion')
+      //add 1 point to the score
       this.score = this.score + 1
       this.scoreText.setText('Score: ' + this.score.toString())
+      //creates 2 new aliens
       this.createAlien()
       this.createAlien()
     // end game if 50 points is reached
-    if (this.score >= 1) {
+    if (this.score >= 125) {
       // pause physics to stop new enemies from spawning
       this.physics.pause()
       // play win sound
       this.sound.play('gameWin')
-      //destroy alien and ship
+      //destroy alien 
       alienCollide.destroy()
       // display and style win text
       this.gameWinText = this.add.text(1920 / 2, 1080 / 2, 'You won!\nClick to play again.', this.gameWinTextStyle).setOrigin(0.5)
@@ -121,15 +125,11 @@ class GameScene extends Phaser.Scene {
     }
       }.bind(this))
 
-
-
-
-    
-      // collisions between cannon and ants
+      // collisions between ship and alien
       this.physics.add.collider(this.ship, this.alienGroup, function (shipCollide, alienCollide) {
         // explosion sound on contact
         this.sound.play('boom')
-        // pause physics to stop new enemies fro spawning
+        // pause physics to stop new enemies for spawning
         this.physics.pause()
         // destroy cannon on contact with ant
         alienCollide.destroy()
@@ -186,7 +186,7 @@ class GameScene extends Phaser.Scene {
 
     //creates a function group for the missile group
     this.missileGroup.children.each(function (item) {
-      item.y = item.y - 5
+      item.y = item.y - 8
       if (item.y < 0) {
         item.destroy()
       }
