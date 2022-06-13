@@ -11,7 +11,7 @@ class MenuScene extends Phaser.Scene {
     super({ key: "menuScene" })
 
     this.menuSceneBackgroundImage = null
-    this.startButton = null
+    this.back = null
   }
   
   //Sets up the base state of the scene
@@ -33,14 +33,9 @@ class MenuScene extends Phaser.Scene {
     this.menuSceneBackgroundImage.y = 1080 / 2
 
     //Button
-    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 300, 'play-button')
-    this.startButton.setInteractive({ useHandCursor: true })
-    this.startButton.on('pointerdown', () => this.clickButton ())
-
-    //Button2
-    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 300, 'play-button')
-    this.startButton.setInteractive({ useHandCursor: true })
-    this.startButton.on('pointerdown', () => this.clickButton2 ())
+    this.back = this.add.sprite(1920 / 2, (1080 / 2) + 300, 'play-button')
+    this.back.setInteractive({ useHandCursor: true })
+    this.back.on('pointerdown', () => this.clickButton ())
   }
   
   update (time, delta) {
@@ -49,11 +44,6 @@ class MenuScene extends Phaser.Scene {
   //Clickbutton function
   clickButton () {
     this.scene.start('gameScene')
-  }
-
-  //Clickbutton function
-  clickButton2 () {
-    this.scene.start('instructions')
   }
 }
 

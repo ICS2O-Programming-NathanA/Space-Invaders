@@ -35,8 +35,14 @@ class GameScene extends Phaser.Scene {
     this.scoreText = null
     this.scoreTextStyle = { font: '65px Arial', fill: '#ffffff', align: 'center'}
 
+    //game over text variable
     this.gameOverText = null
     this.gameOverTextStyle = {font: '65px Arial', fill: '#ff0000', align: 'center'}
+
+    // game win text variable
+    this.gameWinText = null
+    // game over text variable styling
+    this.gameWinTextStyle = { font: '65px Arial', fill: '#ff0000', align: 'center' }
   }
   
   //Sets up the base state of the scene
@@ -68,6 +74,9 @@ class GameScene extends Phaser.Scene {
 
     //sound for alien being destroyed
     this.load.audio('boom', 'assets/explosion.wav')
+
+    //sound for winning the game
+    this.load.audio('gameWin', 'assets/game-win.mp3')
   }
   //displays the content to the user
   create (data) {
@@ -96,8 +105,26 @@ class GameScene extends Phaser.Scene {
       this.scoreText.setText('Score: ' + this.score.toString())
       this.createAlien()
       this.createAlien()
-    }.bind(this))
+    // end game if 50 points is reached
+    if (this.score >= 1) {
+      // pause physics to stop new enemies from spawning
+      this.physics.pause()
+      // play win sound
+      this.sound.play('gameWin')
+      //destroy alien and ship
+      alienCollide.destroy()
+      // display and style win text
+      this.gameWinText = this.add.text(1920 / 2, 1080 / 2, 'You won!\nClick to play again.', this.gameWinTextStyle).setOrigin(0.5)
+      // make game win text clickable to take you back to gameScene
+      this.gameWinText.setInteractive({ useHandCursor: true })
+      this.gameWinText.on('pointerdown', () => this.scene.start('gameScene', this.score = 0))
+    }
+      }.bind(this))
 
+
+
+
+    
       // collisions between cannon and ants
       this.physics.add.collider(this.ship, this.alienGroup, function (shipCollide, alienCollide) {
         // explosion sound on contact
