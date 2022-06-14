@@ -17,7 +17,7 @@ class GameScene extends Phaser.Scene {
     //this will add a minus in 50% of cases
     alienXVelocity *= Math.round(Math.random()) ? 1 : -1
     const anAlien = this.physics.add.sprite(alienXLocation, -100, 'alien')
-    anAlien.body.velocity.y = 75
+    anAlien.body.velocity.y = 100
     anAlien.body.velocity.x = alienXVelocity
 
     this.alienGroup.add(anAlien)
@@ -189,6 +189,14 @@ class GameScene extends Phaser.Scene {
       item.y = item.y - 8
       if (item.y < 0) {
         item.destroy()
+      }
+    })
+
+    this.alienGroup.children.each(function (item) {
+      if (item.y > 1080 || item.x < 0 || item.x > 1920) {
+        item.y = -5
+        const alienXLocationCord = Math.floor(Math.random() * 1920) + 1
+        item.x = alienXLocationCord
       }
     })
   }
