@@ -26,7 +26,7 @@ class InstructionScene extends Phaser.Scene {
     // log 'Instruction Scene' to console
     console.log('Instruction Scene')
     // load background image
-    this.load.image('instructionSceneBackground', './assets/space-instructions.png')
+    this.load.image('instructionSceneBackground', './assets/space-instructions1.png')
     // load back button image
     this.load.image('backButton', './assets/back.png')
   }

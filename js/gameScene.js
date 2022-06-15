@@ -67,16 +67,16 @@ class GameScene extends Phaser.Scene {
     this.load.image('alien', 'assets/space-invaders-enemy1.png')
     
     //sound for missile
-    this.load.audio('laser', 'assets/invaderkilled.wav')
+    this.load.audio('laser', 'sounds/invaderkilled.wav')
 
     //sound for alien being destroyed
-    this.load.audio('explosion', 'assets/shoot.wav')
+    this.load.audio('explosion', 'sounds/shoot.wav')
 
     //sound for ship being destroyed
-    this.load.audio('boom', 'assets/explosion.wav')
+    this.load.audio('boom', 'sounds/explosion.wav')
 
     //sound for winning the game
-    this.load.audio('gameWin', 'assets/game-win.mp3')
+    this.load.audio('gameWin', 'sounds/game-win.mp3')
   }
   //displays the content to the user
   create (data) {
@@ -110,7 +110,7 @@ class GameScene extends Phaser.Scene {
       this.createAlien()
       this.createAlien()
     // end game if 50 points is reached
-    if (this.score >= 125) {
+    if (this.score >= 40) {
       // pause physics to stop new enemies from spawning
       this.physics.pause()
       // play win sound

@@ -63,25 +63,28 @@ class GameSceneTwo extends Phaser.Scene {
     this.load.image('ship', 'assets/spaceinvaders-shooter.png')
 
     // SpaceShip 2
-    this.load.image('ship1', 'assets/ship1.jpg')
+    this.load.image('ship1', 'assets/spaceinvaders-shooter1.png')
 
     // missile
     this.load.image('missile', 'assets/rocket-space.png')
+
+    // missile2
+    this.load.image('missile1', 'assets/rocket-space1.png')
 
     // alien1
     this.load.image('alien', 'assets/space-invaders-enemy1.png')
     
     // sound for missile
-    this.load.audio('laser', 'assets/invaderkilled.wav')
+    this.load.audio('laser', 'sounds/invaderkilled.wav')
 
     // sound for alien being destroyed
-    this.load.audio('explosion', 'assets/shoot.wav')
+    this.load.audio('explosion', 'sounds/shoot.wav')
 
     // sound for ship being destroyed
-    this.load.audio('boom', 'assets/explosion.wav')
+    this.load.audio('boom', 'sounds/explosion.wav')
 
     //sound for winning the game
-    this.load.audio('gameWin', 'assets/game-win.mp3')
+    this.load.audio('gameWin', 'sounds/game-win.mp3')
   }
   //displays the content to the user
   create (data) {
@@ -116,7 +119,7 @@ class GameSceneTwo extends Phaser.Scene {
       this.createAlien()
       this.createAlien()
     // end game if 50 points is reached
-    if (this.score >= 125) {
+    if (this.score >= 50) {
       // pause physics to stop new enemies from spawning
       this.physics.pause()
       // play win sound
@@ -147,7 +150,7 @@ class GameSceneTwo extends Phaser.Scene {
         this.gameOverText.setInteractive({ useHandCursor: true })
         this.gameOverText.on('pointerdown', () => this.scene.start('gameSceneTwo'))
       }.bind(this))
-    this.physics.add.collider(this.ship, this.alienGroup, function (shipCollide, alienCollide) {
+    this.physics.add.collider(this.ship1, this.alienGroup, function (ship1Collide, alienCollide) {
       // collisions between ship1 and alien
         // explosion sound on contact
         this.sound.play('boom')
@@ -231,10 +234,10 @@ class GameSceneTwo extends Phaser.Scene {
 
     //Fire missile if shift is pressed
     if (keyshiftObj.isDown === true) {
-      if (this.fireMissile === false) {
+      if (this.fireMissile1 === false) {
         //fire missile
-        this.fireMissile = true
-        const aNewMissile = this.physics.add.sprite(this.ship1.x, this.ship1.y, 'missile')
+        this.fireMissile1 = true
+        const aNewMissile = this.physics.add.sprite(this.ship1.x, this.ship1.y, 'missile1')
         this.missileGroup.add(aNewMissile)
         //plays laser sound
         this.sound.play('laser')
@@ -242,8 +245,8 @@ class GameSceneTwo extends Phaser.Scene {
     }
     
     //sets firemissile to false
-    if (keyspaceObj.isUp === true) {
-      this.fireMissile = false
+    if (keyshiftObj.isUp === true) {
+      this.fireMissile1 = false
     }
 
     //creates a function group for the missile group

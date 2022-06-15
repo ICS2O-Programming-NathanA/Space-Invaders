@@ -25,6 +25,8 @@ class MenuScene extends Phaser.Scene {
     this.load.image('menuSceneBackground', 'assets/SpaceInvadersMenu.png')
     this.load.image('play-button', 'assets/play-button.png')
     this.load.image('Instructions', 'assets/Instructions.png')
+    this.load.image('singlePlayer', 'assets/single_player.png')
+    this.load.image('twoPlayer', 'assets/two_player.png')
   }
 
   //displays the content to the user
@@ -33,10 +35,15 @@ class MenuScene extends Phaser.Scene {
     this.menuSceneBackgroundImage.x = 1920 / 2
     this.menuSceneBackgroundImage.y = 1080 / 2
 
-    //Button
-    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 200, 'play-button')
+    //Button - single player
+    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 100, 'singlePlayer')
     this.startButton.setInteractive({ useHandCursor: true })
     this.startButton.on('pointerdown', () => this.clickButton ())
+
+    //Button - two player
+    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 300, 'twoPlayer')
+    this.startButton.setInteractive({ useHandCursor: true })
+    this.startButton.on('pointerdown', () => this.clickButton1 ())
   
   
     //Button - Instructions
@@ -50,6 +57,11 @@ class MenuScene extends Phaser.Scene {
 
   //Clickbutton function
   clickButton () {
+    this.scene.start('gameScene')
+  }
+  
+  //Clickbutton function
+  clickButton1 () {
     this.scene.start('gameSceneTwo')
   }
 
