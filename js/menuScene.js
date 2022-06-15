@@ -50,7 +50,7 @@ class MenuScene extends Phaser.Scene {
 
   //Clickbutton function
   clickButton () {
-    this.scene.start('gameScene')
+    this.scene.start('gameSceneTwo')
   }
 
   //Clickbutton function

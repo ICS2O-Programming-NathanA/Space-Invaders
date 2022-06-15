@@ -11,6 +11,7 @@ import SplashScene from "./splashScene.js"
 import TitleScene from "./titleScene.js"
 import MenuScene from "./menuScene.js"
 import GameScene from "./gameScene.js"
+import GameSceneTwo from "./gameSceneTwo.js"
 import InstructionScene from "./instructionScene.js"
 
 // create the scenes
@@ -18,6 +19,7 @@ const splashScene = new SplashScene()
 const titleScene = new TitleScene()
 const menuScene = new MenuScene()
 const gameScene = new GameScene()
+const gameSceneTwo = new GameSceneTwo()
 const instructionScene = new InstructionScene()
 
 /**
@@ -51,6 +53,7 @@ console.log(game)
 game.scene.add('splashScene', splashScene)
 game.scene.add("titleScene", titleScene)
 game.scene.add("menuScene", menuScene)
+game.scene.add("gameSceneTwo", gameSceneTwo)
 game.scene.add("gameScene", gameScene)
 game.scene.add("instructionScene", instructionScene)
 
