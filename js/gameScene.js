@@ -65,6 +65,9 @@ class GameScene extends Phaser.Scene {
 
     //alien1
     this.load.image('alien', 'assets/space-invaders-enemy1.png')
+
+    //homebutton
+    this.load.image('homeButton', 'assets/home-button.png')
     
     //sound for missile
     this.load.audio('laser', 'sounds/invaderkilled.wav')
@@ -88,6 +91,11 @@ class GameScene extends Phaser.Scene {
     this.scoreText = this.add.text(10, 10, 'Score: ' + this.score.toString(), this.scoreTextStyle)
 
     this.ship = this.physics.add.sprite(1920 / 2, 1080 - 100, 'ship')
+
+    // create home button
+    this.homeButton = this.add.sprite(1750, (1080 / 7) + 1, 'homeButton').setScale(2)
+    this.homeButton.setInteractive({ useHandCursor: true })
+    this.homeButton.on('pointerdown', () => this.scene.start('menuScene', this.score = 0))
 
     //creates a group for the missiles
     this.missileGroup = this.physics.add.group()
@@ -156,14 +164,14 @@ class GameScene extends Phaser.Scene {
 
     //Moving the ship to the left if the left arrow key is pressed
     if (keyLeftObj.isDown === true) {
-      this.ship.x -= 5
+      this.ship.x -= 10
       if (this.ship.x < 0) {
         this.ship.x = 1920
       }
     }
     //Moving the ship to the right if the right arrow key is pressed
     if (keyrightObj.isDown === true) {
-      this.ship.x += 5
+      this.ship.x += 10
       if (this.ship.x > 1920) {
         this.ship.x = 0
       }

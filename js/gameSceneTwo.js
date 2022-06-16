@@ -74,6 +74,9 @@ class GameSceneTwo extends Phaser.Scene {
     // alien1
     this.load.image('alien', 'assets/space-invaders-enemy1.png')
     
+    //Home Button
+    this.load.image('homeButton', 'assets/home-button.png')
+
     // sound for missile
     this.load.audio('laser', 'sounds/invaderkilled.wav')
 
@@ -98,6 +101,12 @@ class GameSceneTwo extends Phaser.Scene {
     this.ship = this.physics.add.sprite(1920 / 2, 1080 - 100, 'ship')
     this.ship1 = this.physics.add.sprite(1920 / 2, 1080 - 100, 'ship1')
 
+
+    // create home button
+    this.homeButton = this.add.sprite(1750, (1080 / 7) + 1, 'homeButton').setScale(2)
+    this.homeButton.setInteractive({ useHandCursor: true })
+    this.homeButton.on('pointerdown', () => this.scene.start('menuScene', this.score = 0))
+    
     //creates a group for the missiles
     this.missileGroup = this.physics.add.group()
 
