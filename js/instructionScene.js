@@ -1,9 +1,8 @@
 /* global phaser */
 
-// Copyright (c) 2020 Mr Coxall All rights reserved
-// Modified 2022 Rory Mackay
+// Copyright (c) 2022 Mr Coxall All rights reserved
 //
-// Created by: Rory Mackay
+//Modified by Nathan Araujo
 // Date: June 2022
 // This is an instruction scene
 

@@ -1,8 +1,8 @@
 /* global Phaser */
 
-// Copyright (c) 2022 Nathan Araujo All rights reserved
+// Copyright (c) 2022 Mr Coxall All rights reserved
 //
-// Created by: Nathan Araujo
+//Modified by Nathan Araujo
 // Created on: June 1 2022
 // This is the Splash Scene
 

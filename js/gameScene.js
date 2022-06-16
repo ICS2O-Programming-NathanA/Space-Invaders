@@ -1,7 +1,8 @@
 /* Global Phaser */
 
-// Nathan Araujo All rights reserved
-// Created by Nathan Araujo
+// Copyright (c) 2022 Mr Coxall All rights reserved
+//
+//Modified by Nathan Araujo
 // Created on June 3 2022
 // This is the Game Scene
 
@@ -28,6 +29,7 @@ class GameScene extends Phaser.Scene {
   constructor () {
     super({ key: "gameScene" })
 
+    //initialize variables
     this.background = null
     this.ship = null
     this.fireMissile = false
