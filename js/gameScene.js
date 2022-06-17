@@ -120,7 +120,7 @@ class GameScene extends Phaser.Scene {
       this.createAlien()
       this.createAlien()
     // end game if 50 points is reached
-    if (this.score >= 40) {
+    if (this.score >= 50) {
       // pause physics to stop new enemies from spawning
       this.physics.pause()
       // play win sound

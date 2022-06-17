@@ -9,7 +9,7 @@
 class InstructionScene extends Phaser.Scene {
   constructor () {
     super({ key: 'instructionScene' })
-    // creates variable for instruction scene backround image
+    // creates variable for instruction scene background image
     this.instructionSceneBackgroundImage = null
 
     // creates variable for back button
@@ -25,13 +25,13 @@ class InstructionScene extends Phaser.Scene {
     // log 'Instruction Scene' to console
     console.log('Instruction Scene')
     // load background image
-    this.load.image('instructionSceneBackground', './assets/space-instructions1.png')
+    this.load.image('instructionSceneBackground', './assets/space-instructions0000.png')
     // load back button image
     this.load.image('backButton', './assets/back.png')
   }
   
   create (data) {
-    // create instruction scene backround image
+    // create instruction scene background image
     this.instructionSceneBackgroundImage = this.add.sprite(0, 0, 'instructionSceneBackground').setScale(1.5)
     // cemter background image
     this.instructionSceneBackgroundImage.x = 1920 / 2

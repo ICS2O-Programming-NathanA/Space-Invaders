@@ -116,7 +116,7 @@ class GameSceneTwo extends Phaser.Scene {
     this.alienGroup = this.add.group()
     this.createAlien()
 
-    //Collisons between missiles and aliens
+    //Collisions between missiles and aliens
     this.physics.add.collider(this.missileGroup, this.alienGroup, function (missileCollide, alienCollide) {
       //destroys alien and missile
       alienCollide.destroy()
@@ -129,8 +129,8 @@ class GameSceneTwo extends Phaser.Scene {
       //creates 2 new aliens
       this.createAlien()
       this.createAlien()
-    // end game if 50 points is reached
-    if (this.score >= 50) {
+    // end game if 100 points is reached
+    if (this.score >= 100) {
       // pause physics to stop new enemies from spawning
       this.physics.pause()
       // play win sound
@@ -201,28 +201,28 @@ class GameSceneTwo extends Phaser.Scene {
 
     //Moving the ship to the left if the left arrow key is pressed
     if (keyLeftObj.isDown === true) {
-      this.ship.x -= 5
+      this.ship.x -= 10
       if (this.ship.x < 0) {
         this.ship.x = 1920
       }
     }
     //Moving the ship to the right if the right arrow key is pressed
     if (keyrightObj.isDown === true) {
-      this.ship.x += 5
+      this.ship.x += 10
       if (this.ship.x > 1920) {
         this.ship.x = 0
       }
     }
     //Moving the ship to the left if A key is pressed
     if (keyAObj.isDown === true) {
-      this.ship1.x -= 5
+      this.ship1.x -= 10
       if (this.ship1.x < 0) {
         this.ship1.x = 1920
       }
     }
     //Moving the ship to the right if D key is pressed
     if (keyDObj.isDown === true) {
-      this.ship1.x += 5
+      this.ship1.x += 10
       if (this.ship1.x > 1920) {
         this.ship1.x = 0
       }
